@@ -25,7 +25,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
         val view = binding.root
         setContentView(view)
 
-        questionsList = Constants.getQuestions()
+        questionsList = QuestionGenerator.getQuestions()
 
         setQuestion()
 
@@ -34,14 +34,12 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
         binding.opt3.setOnClickListener(this)
         binding.opt4.setOnClickListener(this)
         binding.submitButton.setOnClickListener(this)
-
     }
 
     private fun setQuestion(){
-
         val question = questionsList!![currentQuestion-1]
 
-        defaultOptionsView()
+        defaultOptionDesign()
 
         if(currentQuestion == questionsList!!.size){
             binding.submitButton.text = "COMPLETE"
@@ -57,50 +55,42 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
 
     }
 
-    private fun defaultOptionsView(){
+    private fun defaultOptionDesign(){
         val options = ArrayList<TextView>()
         options.add(0, binding.opt1)
         options.add(1, binding.opt2)
         options.add(2, binding.opt3)
         options.add(3, binding.opt4)
 
-
         for (option in options){
-            option.setTextColor(Color.parseColor("#7A8089"))
-            option.typeface = Typeface.DEFAULT
-            option.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.default_option_design
-            )
+            option.setTextColor(Color.parseColor("#FFFFF"))
+            option.background = ContextCompat.getDrawable(this, R.drawable.default_option_design)
         }
-
-
     }
     override fun onClick(v:View?){
         when(v?.id){
             R.id.opt1 ->{
-                selectedOptionView(binding.opt1, 1)
+                selectedOptionDesign(binding.opt1, 1)
             }
             R.id.opt2 ->{
-                selectedOptionView(binding.opt2, 2)
+                selectedOptionDesign(binding.opt2, 2)
             }
             R.id.opt3 ->{
-                selectedOptionView(binding.opt3, 3)
+                selectedOptionDesign(binding.opt3, 3)
             }
             R.id.opt4 ->{
-                selectedOptionView(binding.opt4, 4)
+                selectedOptionDesign(binding.opt4, 4)
             }
             R.id.submitButton ->{
                 if(selectedOption == 0){
                     currentQuestion++
-
                     when{
                         currentQuestion <= questionsList!!.size ->{
                             setQuestion()
                         }else ->{
                             binding.submitButton.setOnClickListener{
                                 val intent = Intent(this, EndingActivity::class.java)
-                                intent.putExtra(Constants.countCorrect, countCorrect)
+                                intent.putExtra(QuestionGenerator.countCorrect, countCorrect)
                                 startActivity(intent)
                                 finish()
                             }
@@ -110,11 +100,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
                 else{
                     val question = questionsList?.get(currentQuestion -1)
                     if (question!!.optionAnswer != selectedOption){
-                        answerView(selectedOption, R.drawable.wrong_option_design)
+                        answerDesign(selectedOption, R.drawable.wrong_option_design)
                     }else{
                         countCorrect++
                     }
-                    answerView(question.optionAnswer, R.drawable.correct_option_design)
+                    answerDesign(question.optionAnswer, R.drawable.correct_option_design)
 
                     if(currentQuestion == questionsList!!.size){
                         binding.submitButton.text = "COMPLETE"
@@ -127,7 +117,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
         }
     }
 
-    private fun answerView(answer: Int, drawableView: Int){
+    private fun answerDesign(answer: Int, drawableView: Int){
         when(answer){
             1 ->{
                 binding.opt1.background = ContextCompat.getDrawable(
@@ -149,21 +139,14 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
                     this, drawableView
                 )
             }
-
         }
     }
 
-    private fun selectedOptionView(tv: TextView,
-                                   selectedOptionNumber: Int){
-        defaultOptionsView()
+    private fun selectedOptionDesign(selected: TextView, selectedOptionNumber: Int){
+        defaultOptionDesign()
         selectedOption = selectedOptionNumber
 
-        tv.setTextColor(Color.parseColor("#363A43"))
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.background = ContextCompat.getDrawable(
-            this,
-            R.drawable.selected_option_design
-        )
+        selected.setTextColor(Color.parseColor("#000000"))
+        selected.background = ContextCompat.getDrawable(this, R.drawable.selected_option_design)
     }
-
 }

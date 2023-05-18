@@ -16,7 +16,7 @@ class EndingActivity : AppCompatActivity() {
         setContentView(view)
 
 
-        val correctAnswers = intent.getIntExtra(Constants.countCorrect,0)
+        val correctAnswers = intent.getIntExtra(QuestionGenerator.countCorrect,0)
         binding.scoreText.text = "Your Score: $correctAnswers / 12"
 
         binding.tryAgainButton.setOnClickListener {

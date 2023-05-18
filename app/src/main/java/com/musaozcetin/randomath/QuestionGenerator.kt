@@ -1,7 +1,7 @@
 package com.musaozcetin.randomath
 import kotlin.random.Random
 
-object Constants {
+object QuestionGenerator {
 
     val countCorrect: String = "count_correct_answers"
 

@@ -1,5 +1,4 @@
 package com.musaozcetin.randomath
-
 class Question(
     val id: String,
     val question: String,
