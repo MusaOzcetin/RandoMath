@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/congratsText"
-        android:layout_width="253dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginTop="150dp"
         android:background="#000000"
@@ -25,8 +25,8 @@
 
     <TextView
         android:id="@+id/scoreText"
-        android:layout_width="205dp"
-        android:layout_height="50dp"
+        android:layout_width="250dp"
+        android:layout_height="51dp"
         android:layout_marginTop="100dp"
         android:background="#000000"
         android:gravity="center"
@@ -39,13 +39,13 @@
         app:layout_constraintTop_toBottomOf="@+id/congratsText" />
 
     <TextView
-        android:id="@+id/timerText"
-        android:layout_width="305dp"
-        android:layout_height="52dp"
+        android:id="@+id/remainingText"
+        android:layout_width="220dp"
+        android:layout_height="46dp"
         android:layout_marginTop="15dp"
         android:background="#000000"
         android:gravity="center"
-        android:text="You have spent x seconds to complete."
+        android:text="Remaining Time:"
         android:textColor="#FBE012"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -53,9 +53,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText" />
 
+    <TextView
+        android:id="@+id/spentText"
+        android:layout_width="190dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:text="Time Spent:"
+        android:textColor="#FBE012"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remainingText" />
+
     <Button
         android:id="@+id/tryAgainButton"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="TRY AGAIN"
@@ -63,6 +78,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoreText" />
+        app:layout_constraintTop_toBottomOf="@+id/spentText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

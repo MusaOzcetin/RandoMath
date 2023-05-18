@@ -20,8 +20,9 @@ class EndingActivity : AppCompatActivity() {
 
         val remainingTime = intent.getLongExtra("remainingTime",0)
         val spentTime = 60 - remainingTime
-        binding.timerText.text = "Remaning time : $remainingTime seconds. " +
-                                 "You have spent $spentTime seconds."
+        binding.remainingText.text = "Remaining Time : $remainingTime seconds"
+        binding.spentText.text = "Time Spent : $spentTime seconds"
+
         if(correctAnswers > 6){
             binding.congratsText.text = "CONGRATULATIONS!"
         }else{
