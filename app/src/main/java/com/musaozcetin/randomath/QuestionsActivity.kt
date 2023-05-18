@@ -130,6 +130,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
                     val question = questionsList?.get(currentQuestion -1)
                     if (question!!.optionAnswer != selectedOption){
                         answerDesign(selectedOption, R.drawable.wrong_option_design)
+                        val intent = Intent(this, EndingActivity::class.java)
+                        intent.putExtra(QuestionGenerator.countCorrect, countCorrect)
+                        intent.putExtra("remainingTime", remainingTime)
+                        startActivity(intent)
+                        finish()
                     }else{
                         countCorrect++
                     }
