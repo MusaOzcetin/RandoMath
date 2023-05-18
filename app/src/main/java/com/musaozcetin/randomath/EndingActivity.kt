@@ -18,6 +18,10 @@ class EndingActivity : AppCompatActivity() {
         val correctAnswers = intent.getIntExtra(QuestionGenerator.countCorrect,0)
         binding.scoreText.text = "Your Score: $correctAnswers / 12"
 
+        val remainingTime = intent.getLongExtra("remainingTime",0)
+        val spentTime = 60 - remainingTime
+        binding.timerText.text = "Remaning time : $remainingTime seconds. " +
+                                 "You have spent $spentTime seconds."
         if(correctAnswers > 6){
             binding.congratsText.text = "CONGRATULATIONS!"
         }else{

@@ -38,6 +38,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/congratsText" />
 
+    <TextView
+        android:id="@+id/timerText"
+        android:layout_width="305dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:text="You have spent x seconds to complete."
+        android:textColor="#FBE012"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText" />
+
     <Button
         android:id="@+id/tryAgainButton"
         android:layout_width="wrap_content"

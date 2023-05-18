@@ -2,7 +2,6 @@ package com.musaozcetin.randomath
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -20,13 +19,39 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
     private var selectedOption : Int = 0
     private var countCorrect: Int = 0
 
+    private lateinit var timerTextView: TextView
+    private lateinit var countDownTimer: CountDownTimer
 
+    private val totalTime: Long = 60000
+    private val interval: Long = 1000
+    private var remainingTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        countDownTimer = object : CountDownTimer(totalTime, interval) {
+            override fun onTick(totalTime: Long) {
+                val seconds = totalTime / 1000
+                binding.timerTextView.text = "$seconds"
+                remainingTime = seconds
+            }
+
+            override fun onFinish() {
+                val intent = Intent(this@QuestionsActivity, EndingActivity::class.java)
+                intent.putExtra("remainingTime", remainingTime)
+                startActivity(intent)
+                finish()
+            }
+        }
+        countDownTimer.start()
+
+        fun onDestroy() {
+            super.onDestroy()
+            countDownTimer.cancel()
+        }
 
         questionsList = QuestionGenerator.getQuestions()
 
@@ -94,6 +119,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
                             binding.submitButton.setOnClickListener{
                                 val intent = Intent(this, EndingActivity::class.java)
                                 intent.putExtra(QuestionGenerator.countCorrect, countCorrect)
+                                intent.putExtra("remainingTime", remainingTime)
                                 startActivity(intent)
                                 finish()
                             }
