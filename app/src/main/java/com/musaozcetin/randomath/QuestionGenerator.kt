@@ -9,7 +9,7 @@ object QuestionGenerator {
 
         val questionsList = ArrayList<Question> ()
 
-            val randomNumbers = IntArray(24)
+            val randomNumbers = IntArray(96)
 
         // for random addition problems
         for (i in 0 .. 2) {
@@ -18,7 +18,7 @@ object QuestionGenerator {
 
                 val quest =
                     Question ("$i",
-                    " ${randomNumbers[i]} " + "+" + " ${randomNumbers[i+1]} " + "?",
+                    " ${randomNumbers[i]} " + "+" + " ${randomNumbers[i+1]} = " + "?",
                     randomNumbers[i] + randomNumbers[i+1],
                     randomNumbers[i] + randomNumbers[i+1] -5,
                     randomNumbers[i] + randomNumbers[i+1] +5,
@@ -35,7 +35,7 @@ object QuestionGenerator {
 
             val quest =
                 Question ("$i",
-                    " ${randomNumbers[i]} " + "-" + " ${randomNumbers[i+1]} " + "?",
+                    " ${randomNumbers[i]} " + "-" + " ${randomNumbers[i+1]} = " + "?",
                     randomNumbers[i] - randomNumbers[i+1]-10,
                     randomNumbers[i] - randomNumbers[i+1],
                     randomNumbers[i] - randomNumbers[i+1] +5,
@@ -54,7 +54,7 @@ object QuestionGenerator {
 
                 val quest =
                     Question ("$i",
-                        " ${randomNumbers[i]} " + "/" + " ${randomNumbers[i+1]} " + "?",
+                        " ${randomNumbers[i]} " + "/" + " ${randomNumbers[i+1]} = " + "?",
                         randomNumbers[i] / randomNumbers[i+1]-2,
                         randomNumbers[i] / randomNumbers[i+1] -1,
                         randomNumbers[i] / randomNumbers[i+1],
@@ -72,7 +72,7 @@ object QuestionGenerator {
 
             val quest =
                 Question ("$i",
-                    " ${randomNumbers[i]} " + "*" + " ${randomNumbers[i+1]} " + "?",
+                    " ${randomNumbers[i]} " + "*" + " ${randomNumbers[i+1]} = " + "?",
                     randomNumbers[i] * randomNumbers[i+1] -10,
                     randomNumbers[i] * randomNumbers[i+1] -5,
                     randomNumbers[i] * randomNumbers[i+1] +5,
@@ -80,8 +80,10 @@ object QuestionGenerator {
                     4
                 )
             questionsList.add(quest)
+
         }
 
+        questionsList.shuffle()
         return questionsList
     }
 

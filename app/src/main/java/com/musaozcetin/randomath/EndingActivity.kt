@@ -15,9 +15,14 @@ class EndingActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-
         val correctAnswers = intent.getIntExtra(QuestionGenerator.countCorrect,0)
         binding.scoreText.text = "Your Score: $correctAnswers / 12"
+
+        if(correctAnswers > 6){
+            binding.congratsText.text = "CONGRATULATIONS!"
+        }else{
+            binding.congratsText.text = "YOU CAN DO BETTER!"
+        }
 
         binding.tryAgainButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

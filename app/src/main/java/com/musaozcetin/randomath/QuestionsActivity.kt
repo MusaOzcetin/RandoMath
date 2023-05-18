@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -18,6 +19,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
     private var questionsList:ArrayList<Question>? = null
     private var selectedOption : Int = 0
     private var countCorrect: Int = 0
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +66,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener{
         options.add(3, binding.opt4)
 
         for (option in options){
-            option.setTextColor(Color.parseColor("#FFFFF"))
+            option.setTextColor(Color.parseColor("#FFFFFF"))
             option.background = ContextCompat.getDrawable(this, R.drawable.default_option_design)
         }
     }
