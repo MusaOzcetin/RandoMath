@@ -45,7 +45,7 @@ object QuestionGenerator {
             questionsList.add(quest)
         }
 
-        // for random divide problems
+        // for random divison problems
         for (i in 6 .. 8) {
             randomNumbers[i] = Random.nextInt(100,1000)
             do{
